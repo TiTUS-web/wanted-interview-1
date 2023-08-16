@@ -1,0 +1,23 @@
+.app {
+  & {
+  }
+
+  // .app__content
+
+  &__content {
+    font-family: 'Nissan Brand Regular';
+    max-width: 1140px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 0 auto;
+  }
+}
+
+.btn {
+  transition: .2s;
+
+  &:hover {
+    color: #fff;
+    background: #C31631;
+  }
+}

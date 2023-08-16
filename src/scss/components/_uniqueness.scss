@@ -1,0 +1,83 @@
+.uniqueness {
+  & {
+    padding: 64px 0;
+  }
+
+  // .uniqueness__title
+  &__title {
+    font-family: 'Nissan Brand Light';
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 48px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  // .uniqueness__btn
+  &__btn {
+    display: flex;
+    margin: 0 auto;
+    padding: 13px 47px;
+    border: 2px solid #C31631;
+
+  }
+
+  // .uniqueness__features
+  &__features {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    @media (max-width: 769px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+.features {
+  // .features__feature
+  &__feature {
+    max-width: 384px;
+    margin-bottom: 24px;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    @media (max-width: 769px) {
+      width: 100%;
+      margin-right: 0 !important;
+      max-width: initial;
+    }
+  }
+}
+
+.feature {
+  // .feature__picture
+  &__picture {
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 384px;
+    height: 200px;
+    object-fit: cover;
+
+    @media (max-width: 769px) {
+      width: 100%;
+      max-width: initial;
+    }
+  }
+
+  // .feature__text
+  &__text {
+    font-family: 'Nissan Brand Light';
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 160%;
+    max-width: 384px;
+
+    @media (max-width: 769px) {
+      max-width: initial;
+    }
+  }
+}
