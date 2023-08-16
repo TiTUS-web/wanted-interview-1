@@ -8,50 +8,112 @@
       </h2>
 
       <div class="advantages promo__advantages">
-        <div class="advantage advantages__advantage">
-          <img class="icon advantage__icon" src="@/assets/images/promo/benefit.svg" alt="benefit">
-          <div class="text advantage__text">
-            <h3 class="title text__title">выгода</h3>
-            <p class="subtitle text__subtitle">
-              Узнайте о выгодных сервисных предложениях Nissan именно для вашего автомобиля
-            </p>
+        <template v-if="sliderMode">
+          <Carousel :mouseDrag="false" :touchDrag="false">
+            <slide
+                v-for="advantage in advantages"
+                :key="advantage.title"
+                class="advantage advantages__advantage"
+            >
+              <img class="icon advantage__icon" :src="advantage.image" alt="benefit">
+              <div class="text advantage__text">
+                <h3 class="title text__title">{{ advantage.title }}</h3>
+                <p class="subtitle text__subtitle">
+                  {{ advantage.subtitle }}
+                </p>
+              </div>
+            </slide>
+
+            <template #addons>
+              <Navigation />
+              <Pagination />
+            </template>
+          </Carousel>
+        </template>
+        <template v-else>
+          <div
+              v-for="advantage in advantages"
+              :key="advantage.title"
+              class="advantage advantages__advantage"
+          >
+            <img class="icon advantage__icon" :src="advantage.image" alt="benefit">
+            <div class="text advantage__text">
+              <h3 class="title text__title">{{ advantage.title }}</h3>
+              <p class="subtitle text__subtitle">
+                {{ advantage.subtitle }}
+              </p>
+            </div>
           </div>
-        </div>
-        <div class="advantage advantages__advantage">
-          <img class="icon advantage__icon" src="@/assets/images/promo/relevance.svg" alt="relevance">
-          <div class="text advantage__text">
-            <h3 class="title text__title">актуальность</h3>
-            <p class="subtitle text__subtitle">
-              Выберите актуальные для вас сервисные предложения
-            </p>
-          </div>
-        </div>
-        <div class="advantage advantages__advantage">
-          <img class="icon advantage__icon" src="@/assets/images/promo/wide-selection.svg" alt="selection">
-          <div class="text advantage__text">
-            <h3 class="title text__title">широкий выбор</h3>
-            <p class="subtitle text__subtitle">
-              Выберите дилера, который вам подходит
-            </p>
-          </div>
-        </div>
-        <div class="advantage advantages__advantage">
-          <img class="icon advantage__icon" src="@/assets/images/promo/online-service.svg" alt="service">
-          <div class="text advantage__text">
-            <h3 class="title text__title">онлайн сервис</h3>
-            <p class="subtitle text__subtitle">
-              Отправьте дилеру данные о вашем автомобиле в форме удобной анкеты
-            </p>
-          </div>
-        </div>
+        </template>
       </div>
     </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import benefit from '@/assets/icons/benefit.svg';
+import relevance from '@/assets/icons/relevance.svg';
+import wideSelection from '@/assets/icons/wide-selection.svg';
+import onlineService from '@/assets/icons/online-service.svg';
 
+import {defineComponent, reactive, ref, Ref} from 'vue';
+
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel';
+import {Advantage} from '@/types/promo.types';
 export default defineComponent({
   name: 'AppPromo',
+  components: {
+    Carousel,
+    Slide,
+    Navigation,
+    Pagination
+  },
+  setup() {
+    let windowWidth: Ref<number | null> = ref(null);
+    let sliderMode: Ref<boolean | null> = ref(false);
+
+    window.addEventListener('resize', checkScreen);
+    checkScreen();
+
+    function checkScreen(): void {
+      windowWidth.value = window.innerWidth;
+
+      if (windowWidth.value <= 769) {
+        sliderMode.value = true;
+        return;
+      }
+
+      sliderMode.value = false;
+      return;
+    }
+
+    const advantages: Advantage[] = [
+      {
+        image: benefit,
+        title: 'Выгода',
+        subtitle: 'Узнайте о выгодных сервисных предложениях Nissan именно для вашего автомобиля',
+      },
+      {
+        image: relevance,
+        title: 'Актуальность',
+        subtitle: 'Выберите актуальные для вас сервисные предложения',
+      },
+      {
+        image: wideSelection,
+        title: 'Широкий выбор',
+        subtitle: 'Выберите дилера, который вам подходит',
+      },
+      {
+        image: onlineService,
+        title: 'Онлайн сервис',
+        subtitle: 'Отправьте дилеру данные о вашем автомобиле в форме удобной анкеты',
+      },
+    ];
+
+    return {
+      advantages,
+      sliderMode,
+    };
+  }
 });
 </script>

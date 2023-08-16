@@ -20,12 +20,20 @@
     line-height: 64px;
     text-transform: uppercase;
     margin-bottom: 48px;
+
+    @media (max-width: 321px) {
+      font-size: 40px;
+    }
   }
 
   // .promo__advantages
   &__advantages {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 769px) {
+      justify-content: center;
+    }
   }
 }
 

@@ -1,0 +1,21 @@
+.carousel {
+  max-width: 271px;
+}
+
+.carousel__slide {
+  padding: 10px;
+  display: initial !important;
+}
+
+.carousel__prev {
+  left: -10px;
+}
+
+.carousel__next {
+  right: -10px;
+}
+
+.carousel__prev,
+.carousel__next {
+  border: none;
+}
