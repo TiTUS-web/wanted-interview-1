@@ -26,6 +26,6 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'AppConcept',
+  name: 'AppBanner',
 });
 </script>

@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "module": "es2015",
     "target": "esnext",
-    "module": "esnext",
+//    "module": "esnext",
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node",
@@ -34,6 +35,7 @@
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
+
   "exclude": [
     "node_modules"
   ]

@@ -55,11 +55,11 @@ import relevance from '@/assets/icons/relevance.svg';
 import wideSelection from '@/assets/icons/wide-selection.svg';
 import onlineService from '@/assets/icons/online-service.svg';
 
-import {defineComponent, reactive, ref, Ref} from 'vue';
+import {defineComponent, ref, Ref} from 'vue';
 
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Navigation, Pagination } from 'vue3-carousel';
-import {Advantage} from '@/types/promo.types';
+import { TAdvantage } from '@/types/promo.types';
 export default defineComponent({
   name: 'AppPromo',
   components: {
@@ -87,7 +87,7 @@ export default defineComponent({
       return;
     }
 
-    const advantages: Advantage[] = [
+    const advantages: TAdvantage[] = [
       {
         image: benefit,
         title: 'Выгода',

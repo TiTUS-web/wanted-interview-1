@@ -6,7 +6,12 @@
     background: url('@/assets/images/banner/mountains.png') 0 121px no-repeat,
                 url('@/assets/images/banner/car.png') 560px 194px no-repeat,
                 url('@/assets/images/banner/model.png') center 130px no-repeat,
-                linear-gradient(to bottom, #0ABAB5 88%, white 12%)
+                linear-gradient(to bottom, #0ABAB5 88%, white 12%);
+
+    @media (max-width: 1025px) {
+      background: url('@/assets/images/banner/car.png') center 20px no-repeat,
+                  linear-gradient(to bottom, #0ABAB5 88%, white 12%);
+    }
   }
 
   // .banner__concept
@@ -60,5 +65,9 @@
     position: absolute;
     right: 235px;
     bottom: 0;
+
+    @media (max-width: 1025px) {
+      display: none;
+    }
   }
 }

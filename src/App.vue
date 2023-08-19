@@ -1,5 +1,5 @@
 <template>
-  <AppConcept />
+  <AppBanner />
   <main class="content app__content">
     <AppPromo />
     <AppUniqueness />
@@ -8,14 +8,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import AppConcept from '@/components/Concept.vue';
+import AppBanner from '@/components/Banner.vue';
 import AppPromo from '@/components/Promo.vue';
 import AppUniqueness from '@/components/Uniqueness.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    AppConcept,
+    AppBanner,
     AppPromo,
     AppUniqueness
   },

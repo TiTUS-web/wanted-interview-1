@@ -5,34 +5,39 @@
     </h2>
 
     <div class="features uniqueness__features">
-      <div class="feature features__feature">
-        <img class="img feature__picture" src="@/assets/images/features/torpedo.jpg" alt="torpedo">
+      <div
+          v-for="feature in featuresByFigaro"
+          :key="feature.model_name"
+          class="feature features__feature">
+        <img class="img feature__picture" :src="feature.image" :alt="feature.image_alt">
         <p class="text feature__text">
-          Идеально скомпанованная торпеда, удобна в использовнии как для правшей так и для левшей
-        </p>
-      </div>
-      <div class="feature features__feature">
-        <img class="img feature__picture" src="@/assets/images/features/salon.jpg" alt="salon">
-        <p class="text feature__text">
-          Белоснежные кресла и аксессуары салона выгодно подчеркнут ваш свежий средиземноморский загар
-        </p>
-      </div>
-      <div class="feature features__feature">
-        <img class="img feature__picture" src="@/assets/images/features/design.jpg" alt="design">
-        <p class="text feature__text">
-          Хардтоп отличительно элегантной  конструкции, автоматически складывается электроприводом
+          {{ feature.description }}
         </p>
       </div>
     </div>
 
-    <button class="btn uniqueness__btn">Добавить особенность</button>
+    <button @click="addFeature" class="btn uniqueness__btn">Добавить особенность</button>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-
+import { defineComponent, computed } from 'vue';
+import { useMainStore } from '@/store/index';
 export default defineComponent({
   name: 'AppUniqueness',
+  setup() {
+    const store = useMainStore();
+
+    store.getUniqueFeaturesModel();
+
+    const addFeature = () => {
+      store.addFeature();
+    };
+
+    return {
+      featuresByFigaro: computed(() => store.getUniqueFeaturesByFigaro),
+      addFeature
+    };
+  }
 });
 </script>

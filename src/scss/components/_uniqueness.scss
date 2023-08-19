@@ -24,13 +24,17 @@
 
   // .uniqueness__features
   &__features {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 2vw;
     margin-bottom: 40px;
 
     @media (max-width: 769px) {
-      flex-direction: column;
-      align-items: center;
+      grid-gap: 4vw;
+    }
+
+    @media (max-width: 325px) {
+      grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
     }
   }
 }
@@ -39,11 +43,6 @@
   // .features__feature
   &__feature {
     max-width: 384px;
-    margin-bottom: 24px;
-
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
 
     @media (max-width: 769px) {
       width: 100%;
