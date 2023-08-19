@@ -1,24 +1,45 @@
-# wanted
+Тестовое задание Frontend-developer
 
-## Project setup
-```
-npm install
-```
+Сверстать макет 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Сверстайте макет дизайна, используя Vue и разбивку на компоненты. 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+https://www.figma.com/file/Ez40FhZaegRir69MlHuIvu/Test?node-id=0%3A1 
 
-### Lints and fixes files
-```
-npm run lint
-```
+Верстка должна быть адаптивной, блок с преимуществами на мобильных экранах должен прокручиваться в слайдере, а контент блока “Уникальные особенности модели” выстраиваться друг под друга вертикально.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Шрифты в архиве https://drive.google.com/file/d/1YxJgVIi6rfWC016t0QPXgept0eRvIoXX/view?usp=sharing 
+
+Вы можете использовать Nuxt или Quasar.
+
+
+Блок “Уникальные особенности модели” строить на основе ответа API: данные из API сохранять в стейт-менеджер, далее из него заполнять контент блока. Три элемента на строку.
+
+Адрес API: POST https://test-task-frontend-2023.slava.digital 
+Спецификация ответа:
+
+- block_heading — заголовок блока
+- assets_domain — домен, на котором хранятся ассеты
+- features — маcсив уникальных особенностей
+- features[].description — описание особенности
+- features[].image — изображение
+- features[].image_alt — альтернативный текст изображения
+- features[].model_name — название модели
+- features[].sorting — порядок вывода особенностей 
+
+В блок “уникальные особенности модели” нужно выводить только элементы с model_name = “Figaro”, у которых параметры description и image не являются null.
+
+
+При нажатии на кнопку “Добавить особенность” вставлять в список особенностей на вторую позицию еще один пункт:
+- Описание: Вращение стационарно заставляет иначе взглянуть на то, что такое нестационарный гироскопический стабилизатор.
+- Картинка: https://test-task-frontend-2023.slava.digital/assets/img4.png — сохранить локально
+- Альтернативный текст: нестационарный гироскопический стабилизатор
+
+
+Будет плюсом, если проведете оптимизацию скорости загрузки.
+
+
+Напишите Readme-файл с инструкциями по разворачиванию/сборке проекта.
+
+
+Загрузите результат на любой публичный GIT-хостинг, например Github.
